@@ -1,12 +1,18 @@
 const butts = document.querySelector('.butts');
-const cool = document.querySelector('.cool');
+const coolButton = document.querySelector('.cool');
 
 function handleClick() {
-  console.log('IT GOT CLICKED');
+  console.log('🐛 IT GOT CLICKED!!!');
 }
 
-butts.addEventListener('click', handleClick);
-cool.addEventListener('click', handleClick);
+const hooray = () => console.log('HOORAY!');
+
+butts.addEventListener('click', function() {
+  console.log('Im an anon!');
+});
+coolButton.addEventListener('click', hooray);
+
+butts.removeEventListener('click', handleClick);
 
 // Listen on multiple items
 const buyButtons = document.querySelectorAll('button.buy');
@@ -19,7 +25,7 @@ function handleBuyButtonClick(event) {
   console.log(event.target);
   console.log(event.currentTarget);
   console.log(event.target === event.currentTarget);
-  // Stop event from bubbling up
+  // Stop this event from bubbling up
   // event.stopPropagation();
 }
 
@@ -33,6 +39,7 @@ window.addEventListener(
     console.log('YOU CLICKED THE WINDOW');
     console.log(event.target);
     console.log(event.type);
+    // event.stopPropagation();
     console.log(event.bubbles);
   },
   { capture: true }
@@ -40,7 +47,7 @@ window.addEventListener(
 
 const photoEl = document.querySelector('.photo');
 
-photoEl.addEventListener('mouseenter', function(e) {
+photoEl.addEventListener('mouseenter', e => {
   console.log(e.currentTarget);
   console.log(this);
 });
